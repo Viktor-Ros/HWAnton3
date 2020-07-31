@@ -16,4 +16,11 @@ public class MethodsUtils {
 		}		
 		return numValue;
 	}
+	
+	public static String russianLetters(String value) {
+		
+		String clean = value.replaceAll("[^\\а-яёА-ЯЁ ]", "").replaceAll(" ", "");
+
+		return clean;
+	}
 }

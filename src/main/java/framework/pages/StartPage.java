@@ -3,6 +3,7 @@ package framework.pages;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import framework.managers.DriverManager;
+import framework.utils.MethodsUtils;
 
 /**
  * Стартовая страница
@@ -17,10 +19,10 @@ import framework.managers.DriverManager;
 
 public class StartPage extends Page{
 		
-	@FindBy(xpath = "//span[@class = 'lg-menu__text']")
+	@FindBy(xpath = "//label[@class = ' kitt-top-menu__link kitt-top-menu__link_first kitt-top-menu__link_icons kitt-top-menu__link_wide']")
 	private List<WebElement> serviceTypeLabelList;//Типы услуг
 	
-	@FindBy(xpath = "//a[@class = 'lg-menu__sub-link']")
+	@FindBy(xpath = "//a[@class = 'kitt-top-menu__link kitt-top-menu__link_second']")
 	private List<WebElement> serviceLabelList;//Услуги
 		
 	/**
@@ -34,13 +36,17 @@ public class StartPage extends Page{
         	String elementName = new WebDriverWait(DriverManager.getDriver(), 10)
         			.until(ExpectedConditions.elementToBeClickable(element))
         			.getAttribute("innerHTML");
-        	        	
-           if (elementName.equals(serviceTypeName)) {
+       
+        	
+           if (MethodsUtils.russianLetters(elementName).equals(serviceTypeName)) {
         	   
-           	Actions insurAction = new Actions(DriverManager.getDriver());
-        	insurAction.moveToElement(element).build().perform();
+        	    new WebDriverWait(DriverManager.getDriver(), 10)
+           			.until(ExpectedConditions.elementToBeClickable(element))
+           			.click();
             } 	
         }
+		
+
 	}
 	
 	/**
