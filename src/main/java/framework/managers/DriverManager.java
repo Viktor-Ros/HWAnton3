@@ -19,7 +19,7 @@ public class DriverManager {
         if(driver == null) {
         	
         	ChromeOptions chromeOptions= new ChromeOptions();
-   		    chromeOptions.setBinary("C:\\Users\\Viktor\\Manish\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+   		    chromeOptions.setBinary("C:\\Users\\Viktor\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
    		    
 		    System.setProperty("webdriver.chrome.driver", props.getProperty(PATH_CHROME_DRIVER));
 		    driver = new ChromeDriver(chromeOptions);		     
