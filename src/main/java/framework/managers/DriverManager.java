@@ -2,6 +2,7 @@ package framework.managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static framework.utils.PropertiesConstantUtils.*;
 
@@ -17,8 +18,11 @@ public class DriverManager {
     public static WebDriver getDriver() {
         if(driver == null) {
         	
+        	ChromeOptions chromeOptions= new ChromeOptions();
+   		    chromeOptions.setBinary("C:\\Viktor\\Manish\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+   		    
 		    System.setProperty("webdriver.chrome.driver", props.getProperty(PATH_CHROME_DRIVER));
-		    driver = new ChromeDriver();
+		    driver = new ChromeDriver(chromeOptions);		     
         }
         return driver;
     }
