@@ -24,11 +24,6 @@ public class DriverManager {
     }
 
     public static void quitDriver(){
-    	try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
         driver.quit();
         driver = null;
     }
