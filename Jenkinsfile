@@ -1,16 +1,10 @@
 pipeline {
     agent any
      
-   stages {
-        stage('Message') {
-            steps {
-                echo "${MESSAGE}"
-                }
-            }
         stage('Build') {
             steps {
                 withMaven(jdk: 'JDK_Def', maven: 'Maven') {
-                    bat 'mvn clean test'
+                    bat '${params.MAVEN}'
                 }
             }
         }
