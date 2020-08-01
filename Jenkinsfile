@@ -5,7 +5,7 @@ pipeline {
         stage('Run test') {
             steps {
                 withMaven(jdk: 'JDK_Def', maven: 'Maven') {
-                     'clean test allure:report'
+                    bat 'clean test'
                 }
             }
         }
