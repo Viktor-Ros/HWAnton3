@@ -2,14 +2,14 @@ pipeline {
     agent any
      
     stages {
-        stage('Run test') {
+        stage('Build') {
             steps {
                 withMaven(jdk: 'JDK_Def', maven: 'Maven') {
                     bat 'mvn clean test'
                 }
             }
         }
-        stage('Generate Allure Report') {
+        stage('Allure Report') {
             steps {
                 allure includeProperties: false, 
                 jdk: 'JDK_Def', 
