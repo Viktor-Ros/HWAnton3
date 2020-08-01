@@ -4,15 +4,17 @@ pipeline {
     stages {
         stage('Run test') {
             steps {
-                withMaven() {
+                withMaven(maven: 'maven_3.6.3') {
                     bat 'clean test allure:report'
                 }
             }
         }
         stage('Generate Allure Report') {
             steps {
-                allure includeProperties: false,
-                        results: [[path: 'target/allure-results']]
+                allure includeProperties: false, 
+                jdk: 'JDK_Def', 
+                report: 'target/allure-report', 
+                results: [[path: 'target/allure-results']]
             }
         }
     }
