@@ -5,7 +5,7 @@ pipeline {
         stage('Run test') {
             steps {
                 withMaven(jdk: 'JDK_Def', maven: 'Maven') {
-                    bat 'mvn "'${PARAM}'"'
+                    bat 'mvn clean test'
                 }
             }
         }
