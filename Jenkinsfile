@@ -1,19 +1,11 @@
 pipeline {
     agent any
-
-    stages {
-        stage('getParam') {
-            steps {
-                echo '${PARAM}'
-                }
-            }
-        }
-        
+     
     stages {
         stage('Build') {
             steps {
                 withMaven(jdk: 'JDK_Def', maven: 'Maven') {
-                    bat 'mvn ${PARAM}'
+                    bat 'mvn "' + ${PARAM}'"'
                 }
             }
         }
