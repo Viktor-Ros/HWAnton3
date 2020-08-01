@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('getParam') {
             steps {
-                	echo '${PARAM}'
+                	'${PARAM}'
                 }
             }
         }
